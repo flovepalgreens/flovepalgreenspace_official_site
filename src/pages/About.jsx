@@ -6,13 +6,13 @@ import { FaHeart, FaSeedling, FaUsers, FaLeaf } from 'react-icons/fa';
 import { FiGlobe } from 'react-icons/fi';
 import our_story from '../assets/our_story4.jpg'
 
-import ceo from '../assets/team_members/john.JPG'
-import cto from '../assets/team_members/sarvesh.jpg'
-import cf from '../assets/team_members/niranjan.JPG'
-import cfo from '../assets/team_members/athul.JPG'
-import cmo from '../assets/team_members/gowtham.JPG'
-import cpo from '../assets/team_members/nithin.JPG'
-import coo from '../assets/team_members/kamalesh.JPG'
+import ceo from '../assets/team-members/john.jpg'
+import cto from '../assets/team-members/sarvesh.jpg'
+import cf from '../assets/team-members/niranjan.jpg'
+import cfo from '../assets/team-members/athul.jpg'
+import cmo from '../assets/team-members/gowtham.jpg'
+import cpo from '../assets/team-members/nithin.jpg'
+import coo from '../assets/team-members/kamalesh.jpg'
 
 
 const About = () => {
