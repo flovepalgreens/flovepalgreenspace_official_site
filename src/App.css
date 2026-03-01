@@ -1,0 +1,814 @@
+:root {
+  --primary-green: #2E7D32;
+  --secondary-green: #66BB6A;
+  --accent-green: #B9F6CA;
+  --dark-bg: #1B5E20;
+  --light-bg: #F1F8E9;
+  --text-dark: #1A1A1A;
+  --text-light: #F9F9F9;
+  --neon-green: #00E676;
+  --font-main: 'Inter', sans-serif;
+  --transition-speed: 0.3s;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* --- Typography --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  color: var(--primary-green);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  /* Responsive H1 */
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+/* --- Buttons Global Override --- */
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: var(--primary-green) !important;
+  border-color: var(--primary-green) !important;
+  color: var(--text-light) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-green) !important;
+  border-color: var(--secondary-green) !important;
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+  color: var(--primary-green) !important;
+  border-color: var(--primary-green) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+  background-color: var(--primary-green) !important;
+  color: white !important;
+}
+
+.text-success {
+  color: var(--primary-green) !important;
+}
+
+.bg-success {
+  background-color: var(--primary-green) !important;
+}
+
+.border-success {
+  border-color: var(--primary-green) !important;
+}
+
+/* --- Buttons --- */
+.btn-primary-custom {
+  background-color: var(--primary-green);
+  color: var(--text-light);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all var(--transition-speed) ease;
+}
+
+.btn-primary-custom:hover {
+  background-color: var(--secondary-green);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
+}
+
+/* --- Layout Spacing --- */
+body {
+  padding-top: 0;
+  /* Removed padding so navbar overlays hero */
+}
+
+/* Ensure hero doesn't get double padding if not needed, but generally good for content */
+
+/* --- Global Navbar --- */
+.navbar-custom {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  height: 76px;
+}
+
+.nav-link {
+  color: var(--text-dark) !important;
+  font-weight: 500;
+  margin: 0 10px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary-green) !important;
+}
+
+/* --- Mobile Menu Overlay --- */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.6);
+  /* Translucent base */
+  backdrop-filter: blur(15px);
+  /* Strong blur */
+  -webkit-backdrop-filter: blur(15px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+  /* Above navbar */
+}
+
+.mobile-menu-item {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  color: var(--primary-green);
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mobile-menu-chat-trigger {
+  margin-top: 30px;
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 1.5rem;
+  color: var(--primary-green) !important;
+  background: white !important;
+  border-radius: 50% !important;
+  width: 45px;
+  height: 45px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.2s, background-color 0.2s;
+  padding: 0 !important;
+  border: none !important;
+  text-decoration: none !important;
+  z-index: 1100; /* Ensure on top */
+}
+
+.mobile-menu-close:hover {
+  transform: rotate(90deg);
+  background: #f8f8f8 !important;
+  color: var(--secondary-green) !important;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  min-height: 80vh;
+  background: linear-gradient(135deg, var(--light-bg) 0%, #FFFFFF 100%);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 400px;
+  height: 400px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* --- Scroll Hero Section --- */
+.scroll-hero-container {
+  position: relative;
+  height: 400vh;
+  background-color: #000;
+}
+
+.sticky-canvas-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.hero-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  display: block;
+}
+
+/* Mobile Adjustments for Hero */
+@media (max-width: 768px) {
+  .scroll-hero-container {
+    height: auto;
+    min-height: 100vh;
+    background-color: var(--dark-bg);
+    /* Static Green Theme */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sticky-canvas-wrapper {
+    position: relative;
+    height: auto;
+    background: transparent;
+    overflow: visible;
+    /* Allow text to be seen if bounds are weird */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-canvas {
+    display: none;
+  }
+
+  .scroll-overlay-text {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+.scroll-overlay-text {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 10;
+  pointer-events: none;
+  /* Let clicks pass through if needed */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  width: 90%;
+}
+
+/* Remove old Hero Styles if conflicting, or keep for fallback */
+/* --- Cards --- */
+.feature-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  height: 100%;
+  border: 1px solid transparent;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-green);
+}
+
+.icon-large {
+  font-size: 3rem;
+  color: var(--primary-green);
+  margin-bottom: 20px;
+}
+
+/* --- Carousel --- */
+.modern-carousel-img {
+  height: 80%;
+  /* width: 80%; */
+  object-fit: cover;
+  border-radius: 20px;
+  filter: brightness(0.9);
+}
+
+/* --- Chatbot --- */
+.chatbot-trigger {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 2000;
+  border: none;
+  transition: transform 0.2s;
+}
+
+.chatbot-trigger:hover {
+  transform: scale(1.1);
+}
+
+.chatbot-modal {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 350px;
+  height: 500px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--accent-green);
+}
+
+.chat-header {
+  background: var(--primary-green);
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #fcfcfc;
+}
+
+.chat-input-area {
+  padding: 15px;
+  border-top: 1px solid #eee;
+  display: flex;
+}
+
+.chat-input-area input:focus {
+  box-shadow: none !important;
+  border-color: var(--primary-green) !important;
+  outline: none !important;
+}
+
+.chat-msg {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 80%;
+  width: fit-content;
+  font-size: 0.9rem;
+}
+
+.chat-msg p {
+  margin-bottom: 0;
+}
+
+.chat-msg.bot {
+  background: var(--light-bg);
+  align-self: flex-start;
+  color: var(--text-dark);
+}
+
+.chat-msg.user {
+  background: var(--primary-green);
+  align-self: flex-end;
+  color: white;
+  margin-left: auto;
+}
+
+/* Global Form Focus Override */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-green) !important;
+  box-shadow: none !important;
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 768px) {
+  .chatbot-trigger {
+    display: none;
+    /* Hidden on mobile main view, moved to menu */
+  }
+
+  .chatbot-modal {
+    /* Mobile Centering Calculation: Height 60vh (half 30), Width 90% (half 45) */
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-top: -30vh;
+    margin-left: -45%;
+    width: 90%;
+    height: 60vh;
+  }
+}
+
+/* Override React Phone Input Styles */
+.react-tel-input .form-control:focus {
+  border-color: var(--primary-green) !important;
+  box-shadow: none !important;
+}
+
+.react-tel-input .flag-dropdown {
+  border-color: #dee2e6 !important;
+}
+
+.react-tel-input .selected-flag:hover, 
+.react-tel-input .selected-flag:focus {
+  background-color: var(--light-bg) !important;
+}
+
+/* --- Footer --- */
+.footer-section {
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  padding: 60px 0 20px 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  background: var(--primary-green);
+  filter: blur(100px);
+  opacity: 0.2;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.footer-brand {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-green);
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.footer-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 300px;
+}
+
+.footer-heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background-color: var(--neon-green);
+  bottom: -8px;
+  left: 0;
+  border-radius: 2px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.footer-links a:hover {
+  color: var(--neon-green);
+  transform: translateX(5px);
+}
+
+.footer-contact-text {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  background: var(--primary-green);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 230, 118, 0.3);
+}
+
+.footer-bottom {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* --- Testimonials Section --- */
+.testimonial-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+}
+
+/* Fade effect on edges */
+.testimonial-slider::before,
+.testimonial-slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.testimonial-slider::before {
+  left: 0;
+  background: linear-gradient(to right, var(--light-bg), transparent);
+}
+
+.testimonial-slider::after {
+  right: 0;
+  background: linear-gradient(to left, var(--light-bg), transparent);
+}
+
+.testimonial-track {
+  display: flex;
+  width: fit-content;
+  animation: scroll 40s linear infinite;
+  gap: 2rem;
+  /* Ensure padding-left so first item isn't cut off by mask immediately if we used one, but here we loop */
+}
+
+.testimonial-track:hover {
+  animation-play-state: paused;
+}
+
+.testimonial-card {
+  min-width: 400px;
+  background: #f8fdf8;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent-green);
+}
+
+.quote-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  font-style: italic;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* 
+       Calculation: 
+       We have 4 original items.
+       Card width (min-width): 400px
+       Gap: 2rem (approx 32px)
+       Total width per item: 432px
+       Total width of set: 432 * 4 = 1728px
+       We slide by one full set width to loop perfectly.
+    */
+    transform: translateX(calc(-1 * (400px + 2rem) * 4)); 
+  }
+}
+
+/* Mobile adjustments for Testimonials */
+/* Mobile adjustments for Testimonials */
+@media (max-width: 768px) {
+  .testimonial-slider::before,
+  .testimonial-slider::after {
+    display: none; /* Remove fade effect on mobile */
+  }
+
+  .testimonial-track {
+    flex-direction: column;
+    animation: none; /* Disable scrolling animation */
+    width: 100%;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .testimonial-card {
+    min-width: 100%; /* Full width */
+    padding: 1.5rem;
+    margin-right: 0;
+  }
+  
+  .testimonial-card.mobile-hidden {
+    display: none; /* Hide duplicate items */
+  }
+
+
+  .quote-text {
+    font-size: 1rem; /* Slightly smaller text */
+  }
+}
+
+/* --- Team Section --- */
+.team-img-wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  border-radius: 50%;
+  padding: 5px;
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.team-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--primary-green); /* Green border as requested */
+  padding: 3px; /* Clean gap between border and image */
+  background: white;
+}
+
+.team-member-card:hover .team-img-wrapper {
+  transform: translateY(-10px) scale(1.05);
+}
+
+.team-member-card {
+  transition: all 0.3s ease;
+}
+
+/* --- Sector Cards (Folded Layout) --- */
+.sector-card {
+  --card-bg: #2E7D32;
+  position: relative;
+  /* Cut the bottom-right corner */
+  background: linear-gradient(135deg, var(--card-bg) calc(100% - 30px), transparent 0);
+  padding: 30px;
+  min-height: 180px;
+  color: white;
+  border-radius: 4px;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* align-items: flex-start; */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Clean edges */
+  height: 100%;
+}
+
+.sector-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* The Fold Flap */
+.sector-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 30px 30px 0 0;
+  border-color: rgba(0, 0, 0, 0.2) transparent transparent transparent;
+  /* This creates a triangle in the top-left of the box, essentially simulating the fold-back */
+}
+
+.sector-flex {
+  display: flex;
+  align-items: flex-start;
+}
+
+.sector-num {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-right: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  flex-shrink: 0;
+}
+
+.sector-info h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: white !important;
+}
+
+.sector-info p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Color Variants */
+.sector-green { --card-bg: #43A047; }
+.sector-teal { --card-bg: #00897B; }
+.sector-blue { --card-bg: #1E88E5; }
